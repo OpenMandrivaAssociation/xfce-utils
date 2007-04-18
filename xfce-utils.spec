@@ -1,4 +1,4 @@
-%define version	4.4.0
+%define version	4.4.1
 %define release	1
 %define __libtoolize /bin/true
 
@@ -28,8 +28,6 @@ Xfce-utils contains utilities for the Xfce Desktop Environment.
 
 %prep
 %setup -q
-%patch0 -p1 -b .fonts_background
-%patch1 -p1 -b .no_compositor
 
 %build
 %configure2_5x --enable-gdm --sysconfdir=%_sysconfdir/X11

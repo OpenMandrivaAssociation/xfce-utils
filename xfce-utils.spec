@@ -18,7 +18,10 @@ BuildRequires:	chrpath
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
-Xfce-utils contains utilities for the Xfce Desktop Environment.
+The utilities and scripts provides an about dialog for 
+Xfce 4, an application launcher, and several useful 
+scripts that are also used by other Xfce components such 
+as the panel and the desktop menu.
 
 %prep
 %setup -q

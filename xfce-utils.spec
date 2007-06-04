@@ -8,6 +8,7 @@ Group:		Graphical desktop/Xfce
 Source0:	%{name}-%{version}.tar.bz2
 # An english native speaker should feel free to update this file :)
 Source1:	Mandriva
+Patch0:		%{name}-4.4.1-fix-typo-startxfce4.patch
 Requires:	xfce-mcs-manager
 # for /usr/sbin/fndSession:
 Requires:	desktop-common-data
@@ -25,6 +26,7 @@ as the panel and the desktop menu.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %configure2_5x \

@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPL
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -32,7 +32,11 @@ as the panel and the desktop menu.
 %configure2_5x \
 	--enable-gdm \
 	--sysconfdir=%{_sysconfdir}/X11 \
-	--with-vendor-info=Mandriva
+	--with-vendor-info=Mandriva \
+	--with-x \
+	--with-browser=mozilla-firefox \
+	--with-terminal=terminal
+	
 %make
 
 %install
@@ -78,4 +82,6 @@ rm -rf %{buildroot}
 %{_bindir}/*
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*
-%config(noreplace) %{_sysconfdir}/X11/*
+%config(noreplace) %{_sysconfdir}/X11/xdg/xinitrc
+%config(noreplace) %{_sysconfdir}/X11/xdg/helpers.rc
+

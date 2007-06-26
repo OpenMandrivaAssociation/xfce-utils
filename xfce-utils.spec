@@ -9,13 +9,13 @@ Source0:	%{name}-%{version}.tar.bz2
 # An english native speaker should feel free to update this file :)
 Source1:	Mandriva
 Patch0:		%{name}-4.4.1-fix-typo-startxfce4.patch
+BuildRequires:	xfce-mcs-manager-devel
+BuildRequires:	libgdk_pixbuf2.0-devel
+BuildRequires:	chrpath
 Requires:	xfce-mcs-manager
 # for /usr/sbin/fndSession:
 Requires:	desktop-common-data
 Requires:	exo
-BuildRequires:	xfce-mcs-manager-devel
-BuildRequires:	libgdk_pixbuf2.0-devel
-BuildRequires:	chrpath
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -77,6 +77,7 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README TODO COPYING AUTHORS
+%dir %{_sysconfdir}/X11/xdg/xfce4
 %config(noreplace) %{_sysconfdir}/X11/xdg/xfce4/xinitrc
 %{_bindir}/*
 %{_datadir}/xfce4/*

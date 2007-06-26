@@ -35,7 +35,8 @@ as the panel and the desktop menu.
 	--with-vendor-info=Mandriva \
 	--with-x \
 	--with-browser=mozilla-firefox \
-	--with-terminal=terminal
+	--with-terminal=terminal \
+	--disable-static
 	
 %make
 
@@ -57,9 +58,6 @@ rm %{buildroot}%{_datadir}/apps/switchdesk/Xclients.xfce4
 # remove desktop file
 rm %{buildroot}%{_datadir}/xsessions/xfce.desktop
 
-# remove unneeded devel files
-rm -f %{buildroot}%{_libdir}/xfce4/mcs-plugins/*.*a
-
 chrpath -d %{buildroot}%{_bindir}/xfrun4
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/xfce4
 
@@ -79,9 +77,8 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README TODO COPYING AUTHORS
+%config(noreplace) %{_sysconfdir}/X11/xdg/xfce4/xinitrc
 %{_bindir}/*
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*
-%config(noreplace) %{_sysconfdir}/X11/xdg/xinitrc
-%config(noreplace) %{_sysconfdir}/X11/xdg/helpers.rc
-
+%{_sysconfdir}/X11/wmsession.d/06XFce4

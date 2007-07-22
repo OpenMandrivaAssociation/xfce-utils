@@ -29,7 +29,7 @@ as the panel and the desktop menu.
 %prep
 %setup -q
 %patch0 -p0
-%patch1 -p0
+%patch1 -p1
 
 %build
 %configure2_5x \

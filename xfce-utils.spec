@@ -9,6 +9,8 @@ Source0:	%{name}-%{version}.tar.bz2
 # An english native speaker should feel free to update this file :)
 Source1:	Mandriva
 Patch0:		%{name}-4.4.1-fix-typo-startxfce4.patch
+#(tpg) please see bug 29095
+Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
 BuildRequires:	xfce-mcs-manager-devel
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
@@ -27,6 +29,7 @@ as the panel and the desktop menu.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p0
 
 %build
 %configure2_5x \
@@ -78,6 +81,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README TODO COPYING AUTHORS
 %dir %{_sysconfdir}/X11/xdg/xfce4
+%dir %{_datadir}/xfce4
 %config(noreplace) %{_sysconfdir}/X11/xdg/xfce4/xinitrc
 %{_bindir}/*
 %{_datadir}/xfce4/*

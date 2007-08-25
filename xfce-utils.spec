@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.1
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPL
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -11,6 +11,7 @@ Source1:	Mandriva
 Patch0:		%{name}-4.4.1-fix-typo-startxfce4.patch
 #(tpg) please see bug 29095
 Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
+Patch2:		%{name}-4.4.1-xinitrc-cpp.patch
 BuildRequires:	xfce-mcs-manager-devel
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
@@ -30,15 +31,13 @@ as the panel and the desktop menu.
 %setup -q
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 %configure2_5x \
 	--enable-gdm \
 	--sysconfdir=%{_sysconfdir}/X11 \
 	--with-vendor-info=Mandriva \
-	--with-x \
-	--with-browser=mozilla-firefox \
-	--with-terminal=terminal \
 	--disable-static
 	
 %make

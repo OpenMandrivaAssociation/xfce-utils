@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.1
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPL
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -19,6 +19,7 @@ Requires:	xfce-mcs-manager
 # for /usr/sbin/fndSession:
 Requires:	desktop-common-data
 Requires:	exo
+Requires:	dbus-x11
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description

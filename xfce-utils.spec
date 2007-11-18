@@ -40,7 +40,7 @@ as the panel and the desktop menu.
 	--sysconfdir=%{_sysconfdir}/X11 \
 	--with-vendor-info=Mandriva \
 	--disable-static \
-	--with-browser=firefox \
+	--with-browser=Thunar \
 	--with-terminal=Terminal
 %make
 

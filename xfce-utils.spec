@@ -12,7 +12,7 @@ Patch0:		%{name}-4.4.1-fix-typo-startxfce4.patch
 #(tpg) please see bug 29095
 Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
 Patch2:		%{name}-4.4.1-xinitrc-cpp.patch
-BuildRequires:	xfce-mcs-manager-devel
+BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
 Requires:	xfce-mcs-manager

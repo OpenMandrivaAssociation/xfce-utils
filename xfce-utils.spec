@@ -8,7 +8,6 @@ Group:		Graphical desktop/Xfce
 Source0:	%{name}-%{version}.tar.bz2
 # An english native speaker should feel free to update this file :)
 Source1:	Mandriva
-Patch0:		%{name}-4.4.1-fix-typo-startxfce4.patch
 #(tpg) please see bug 29095
 Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
 Patch2:		%{name}-4.4.1-xinitrc-cpp.patch
@@ -30,7 +29,6 @@ as the panel and the desktop menu.
 
 %prep
 %setup -q
-%patch0 -p0
 %patch1 -p1
 %patch2 -p1
 
@@ -42,7 +40,7 @@ as the panel and the desktop menu.
 	--sysconfdir=%{_sysconfdir}/X11 \
 	--with-vendor-info=Mandriva \
 	--disable-static \
-	--with-browser=mozilla-firefox \
+	--with-browser=firefox \
 	--with-terminal=Terminal
 %make
 
@@ -90,3 +88,4 @@ rm -rf %{buildroot}
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*
 %{_sysconfdir}/X11/wmsession.d/06XFce4
+%{_sysconfdir}/X11/xdg/xfce4/Xft.xrdb

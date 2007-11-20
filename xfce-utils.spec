@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -14,6 +14,7 @@ Patch2:		%{name}-4.4.1-xinitrc-cpp.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
+BuildRequires:	dbus-glib-devel
 Requires:	xfce-mcs-manager
 # for /usr/sbin/fndSession:
 Requires:	desktop-common-data
@@ -89,3 +90,4 @@ rm -rf %{buildroot}
 %{_datadir}/icons/*
 %{_sysconfdir}/X11/wmsession.d/06XFce4
 %{_sysconfdir}/X11/xdg/xfce4/Xft.xrdb
+%{_datadir}/dbus-1/services/org.xfce.RunDialog.service

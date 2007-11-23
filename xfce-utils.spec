@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -23,9 +23,9 @@ Requires:	dbus-x11
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
-The utilities and scripts provides an about dialog for 
-Xfce 4, an application launcher, and several useful 
-scripts that are also used by other Xfce components such 
+The utilities and scripts provides an about dialog for
+Xfce 4, an application launcher, and several useful
+scripts that are also used by other Xfce components such
 as the panel and the desktop menu.
 
 %prep

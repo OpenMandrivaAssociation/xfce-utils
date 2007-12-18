@@ -11,6 +11,7 @@ Source1:	Mandriva
 #(tpg) please see bug 29095
 Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
 Patch2:		%{name}-4.4.1-xinitrc-cpp.patch
+Patch3:		%{name}-4.4.2-show-version.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
@@ -31,6 +32,7 @@ as the panel and the desktop menu.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %configure2_5x \

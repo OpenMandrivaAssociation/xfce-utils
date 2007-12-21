@@ -21,6 +21,7 @@ Requires:	xfce-mcs-manager
 Requires:	desktop-common-data
 Requires:	exo
 Requires:	dbus-x11
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The utilities and scripts provides an about dialog for

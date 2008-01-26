@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -12,6 +12,7 @@ Source1:	Mandriva
 Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
 Patch2:		%{name}-4.4.1-xinitrc-cpp.patch
 Patch3:		%{name}-4.4.2-show-version.patch
+Patch4:		01_xflock4-test-running-screensaver.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
@@ -21,6 +22,7 @@ Requires:	xfce-mcs-manager
 Requires:	desktop-common-data
 Requires:	exo
 Requires:	dbus-x11
+Requires:	xinit
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -34,6 +36,7 @@ as the panel and the desktop menu.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %configure2_5x \

@@ -24,6 +24,7 @@ Requires:	exo
 Requires:	dbus-x11
 Requires:	xinit
 Requires:	xdg-user-dirs-gtk
+Requires:	xflockmore
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description

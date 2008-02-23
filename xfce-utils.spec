@@ -13,6 +13,7 @@ Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
 Patch2:		%{name}-4.4.1-xinitrc-cpp.patch
 Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
+Patch5:		%{name}-4.4.2-start-pulseaudio-daemon.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
@@ -39,6 +40,9 @@ as the panel and the desktop menu.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%if %mdkversion > 200800
+%patch5 -p1 -b .pulse
+%endif
 
 %build
 %configure2_5x \

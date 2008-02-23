@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 7
+Release:	%mkrel 8
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -54,6 +54,7 @@ as the panel and the desktop menu.
 	--disable-static \
 	--with-browser=Thunar \
 	--with-terminal=Terminal
+
 %make
 
 %install

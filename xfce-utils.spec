@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 8
+Release:	%mkrel 9
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -25,7 +25,7 @@ Requires:	exo
 Requires:	dbus-x11
 Requires:	xinit
 Requires:	xdg-user-dirs-gtk
-Requires:	xflockmore
+Requires:	xlockmore
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description

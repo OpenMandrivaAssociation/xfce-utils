@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 9
+Release:	%mkrel 10
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -13,7 +13,7 @@ Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
 Patch2:		%{name}-4.4.1-xinitrc-cpp.patch
 Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
-Patch5:		%{name}-4.4.2-start-pulseaudio-daemon.patch
+Patch5:		%{name}-4.4.2-xinitrc.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
@@ -40,9 +40,7 @@ as the panel and the desktop menu.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%if %mdkversion > 200800
-%patch5 -p1 -b .pulse
-%endif
+%patch5 -p1 -b .xinitrc
 
 %build
 %configure2_5x \
@@ -96,7 +94,7 @@ rm -rf %{buildroot}
 %doc README TODO ChangeLog AUTHORS
 %dir %{_sysconfdir}/X11/xdg/xfce4
 %dir %{_datadir}/xfce4
-%config(noreplace) %{_sysconfdir}/X11/xdg/xfce4/xinitrc
+%attr(755,root,root) %{_sysconfdir}/X11/xdg/xfce4/xinitrc
 %{_bindir}/*
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*

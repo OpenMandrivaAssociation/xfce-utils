@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 13
+Release:	%mkrel 14
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -10,10 +10,10 @@ Source0:	%{name}-%{version}.tar.bz2
 Source1:	Mandriva
 #(tpg) please see bug 29095
 Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
-Patch2:		%{name}-4.4.1-xinitrc-cpp.patch
 Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
 Patch5:		%{name}-4.4.2-xinitrc.patch
+Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
@@ -37,10 +37,10 @@ as the panel and the desktop menu.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1 -b .xinitrc
+%patch6 -p1
 
 %build
 %configure2_5x \
@@ -98,6 +98,6 @@ rm -rf %{buildroot}
 %{_bindir}/*
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*
-%{_sysconfdir}/X11/wmsession.d/06XFce4
+%attr(644,root,root) %{_sysconfdir}/X11/wmsession.d/06XFce4
 %{_sysconfdir}/X11/xdg/xfce4/Xft.xrdb
 %{_datadir}/dbus-1/services/org.xfce.RunDialog.service

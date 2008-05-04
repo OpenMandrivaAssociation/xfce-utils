@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 18
+Release:	%mkrel 19
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -15,6 +15,7 @@ Patch4:		01_xflock4-test-running-screensaver.patch
 Patch5:		%{name}-4.4.2-xinitrc.patch
 Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
 Patch7:		%{name}-4.4.2-use-real-GtkComboBoxEntry.patch
+Patch8:		%{name}-4.4.2-startxfce-data-dirs.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
@@ -43,6 +44,7 @@ as the panel and the desktop menu.
 %patch5 -p1 -b .xinitrc
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 %configure2_5x \

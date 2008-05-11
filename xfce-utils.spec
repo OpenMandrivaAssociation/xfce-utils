@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 19
+Release:	%mkrel 20
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -51,7 +51,9 @@ as the panel and the desktop menu.
 	--enable-gdm \
 	--enable-dbus \
 	--with-gdm-prefix=%{_sysconfdir}/X11 \
+%if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11 \
+%endif
 	--with-vendor-info=Mandriva \
 	--disable-static \
 	--with-browser=Thunar \

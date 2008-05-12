@@ -46,6 +46,10 @@ as the panel and the desktop menu.
 %patch7 -p1
 %patch8 -p1
 
+%if %mdkversion >= 200900
+sed -i -e 's#/etc/X11/xdg/#/etc/xdg/#g' scripts/xinitrc.in
+%endif
+
 %build
 %configure2_5x \
 	--enable-gdm \

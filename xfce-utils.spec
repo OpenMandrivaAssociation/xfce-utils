@@ -98,12 +98,18 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README TODO ChangeLog AUTHORS
+%if %mdkversion < 200900
 %dir %{_sysconfdir}/X11/xdg/xfce4
-%dir %{_datadir}/xfce4
 %attr(755,root,root) %{_sysconfdir}/X11/xdg/xfce4/xinitrc
+%{_sysconfdir}/X11/xdg/xfce4/Xft.xrdb
+%else
+%dir %{_sysconfdir}/xdg/xfce4
+%attr(755,root,root) %{_sysconfdir}/xdg/xfce4/xinitrc
+%{_sysconfdir}/xdg/xfce4/Xft.xrdb
+%endif
+%dir %{_datadir}/xfce4
 %{_bindir}/*
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*
 %attr(644,root,root) %{_sysconfdir}/X11/wmsession.d/06XFce4
-%{_sysconfdir}/X11/xdg/xfce4/Xft.xrdb
 %{_datadir}/dbus-1/services/org.xfce.RunDialog.service

@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 21
+Release:	%mkrel 22
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -16,6 +16,7 @@ Patch5:		%{name}-4.4.2-xinitrc.patch
 Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
 Patch7:		%{name}-4.4.2-use-real-GtkComboBoxEntry.patch
 Patch8:		%{name}-4.4.2-startxfce-data-dirs.patch
+Patch9:		%{name}-4.4.2-xfrun-utf8-labels.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
@@ -45,6 +46,7 @@ as the panel and the desktop menu.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %if %mdkversion >= 200900
 sed -i -e 's#/etc/X11/xdg/#/etc/xdg/#g' scripts/xinitrc.in

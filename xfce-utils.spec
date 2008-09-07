@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.4.2
-Release:	%mkrel 22
+Release:	%mkrel 23
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -111,7 +111,7 @@ rm -rf %{buildroot}
 %else
 %dir %{_sysconfdir}/xdg/xfce4
 %attr(755,root,root) %{_sysconfdir}/xdg/xfce4/xinitrc
-%{_sysconfdir}/xdg/xfce4/Xft.xrdb
+%exclude %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %endif
 %dir %{_datadir}/xfce4
 %{_bindir}/*

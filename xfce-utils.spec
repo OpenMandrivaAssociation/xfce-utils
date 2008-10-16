@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
-Version:	4.4.2
-Release:	%mkrel 26
+Version:	4.5.91
+Release:	%mkrel 1
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -14,14 +14,12 @@ Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
 Patch5:		%{name}-4.4.2-xinitrc.patch
 Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
-Patch7:		%{name}-4.4.2-use-real-GtkComboBoxEntry.patch
 Patch8:		%{name}-4.4.2-startxfce-data-dirs.patch
 Patch9:		%{name}-4.4.2-xfrun-utf8-labels.patch
-BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	chrpath
 BuildRequires:	dbus-glib-devel
-Requires:	xfce-mcs-manager
+BuildRequires:	libxfcegui4-devel
 # for /usr/sbin/fndSession:
 Requires:	desktop-common-data
 Requires:	exo
@@ -39,16 +37,13 @@ as the panel and the desktop menu.
 
 %prep
 %setup -q
-%patch1 -p1
+#patch1 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1 -b .xinitrc
 %patch6 -p1
-%if %mdkversion >= 200900
-%patch7 -p1
-%endif
 %patch8 -p1
-%patch9 -p1
+#patch9 -p1
 
 %if %mdkversion >= 200900
 sed -i -e 's#/etc/X11/xdg/#/etc/xdg/#g' scripts/xinitrc.in
@@ -74,18 +69,18 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 # use 06 as session numbering
-mv %{buildroot}%{_sysconfdir}/X11/wmsession.d/10XFce4 \
-    %{buildroot}%{_sysconfdir}/X11/wmsession.d/06XFce4
+#mv %{buildroot}%{_sysconfdir}/X11/wmsession.d/10XFce4 \
+#    %{buildroot}%{_sysconfdir}/X11/wmsession.d/06XFce4
 
 # remove gdm session file, use fndSession
-rm %{buildroot}%{_sysconfdir}/X11/gdm/Sessions/XFce4
-rm %{buildroot}%{_sysconfdir}/X11/dm/Sessions/xfce.desktop
+#rm %{buildroot}%{_sysconfdir}/X11/gdm/Sessions/XFce4
+#rm %{buildroot}%{_sysconfdir}/X11/dm/Sessions/xfce.desktop
 
 # remove switchdesk file, not in mdk
-rm %{buildroot}%{_datadir}/apps/switchdesk/Xclients.xfce4
+#rm %{buildroot}%{_datadir}/apps/switchdesk/Xclients.xfce4
 
 # remove desktop file
-rm %{buildroot}%{_datadir}/xsessions/xfce.desktop
+#rm %{buildroot}%{_datadir}/xsessions/xfce.desktop
 
 chrpath -d %{buildroot}%{_bindir}/xfrun4
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/xfce4
@@ -110,14 +105,18 @@ rm -rf %{buildroot}
 %dir %{_sysconfdir}/X11/xdg/xfce4
 %attr(755,root,root) %{_sysconfdir}/X11/xdg/xfce4/xinitrc
 %{_sysconfdir}/X11/xdg/xfce4/Xft.xrdb
+%{_sysconfdir}/X11/xdg/autostart/xfconf-migration-4.6.desktop
 %else
 %dir %{_sysconfdir}/xdg/xfce4
 %attr(755,root,root) %{_sysconfdir}/xdg/xfce4/xinitrc
 %exclude %{_sysconfdir}/xdg/xfce4/Xft.xrdb
+%{_sysconfdir}/xdg/autostart/xfconf-migration-4.6.desktop
 %endif
 %dir %{_datadir}/xfce4
 %{_bindir}/*
+%{_libdir}/xfce4/xfconf-migration/xfconf-migration-4.6.pl
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*
-%attr(644,root,root) %{_sysconfdir}/X11/wmsession.d/06XFce4
+#attr(644,root,root) %{_sysconfdir}/X11/wmsession.d/06XFce4
 %{_datadir}/dbus-1/services/org.xfce.RunDialog.service
+%{_datadir}/xsessions/xfce.desktop

@@ -9,14 +9,12 @@ Source0:	%{name}-%{version}.tar.bz2
 # An english native speaker should feel free to update this file :)
 Source1:	Mandriva
 #(tpg) please see bug 29095
-Patch1:		%{name}-4.4.1-missing-icon-in-startup-script.patch
 Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
-Patch5:		%{name}-4.4.2-xinitrc.patch
+Patch5:		%{name}-4.5.91-xinitrc.patch
 Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
-Patch8:		%{name}-4.4.2-startxfce-data-dirs.patch
-Patch9:		%{name}-4.4.2-xfrun-utf8-labels.patch
-BuildRequires:	libgdk_pixbuf2.0-devel
+Patch8:		%{name}-4.5.91-startxfce-data-dirs.patch
+Patch10:	%{name}-4.5.91-xfmountdev4-use-thunar.patch
 BuildRequires:	chrpath
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libxfcegui4-devel
@@ -37,29 +35,22 @@ as the panel and the desktop menu.
 
 %prep
 %setup -q
-#patch1 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1 -b .xinitrc
 %patch6 -p1
 %patch8 -p1
-#patch9 -p1
-
-%if %mdkversion >= 200900
-sed -i -e 's#/etc/X11/xdg/#/etc/xdg/#g' scripts/xinitrc.in
-%endif
+%patch10 -p1
 
 %build
 %configure2_5x \
-	--enable-gdm \
 	--enable-dbus \
-	--with-gdm-prefix=%{_sysconfdir}/X11 \
 %if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11 \
 %endif
 	--with-vendor-info=Mandriva \
 	--disable-static \
-	--with-browser=Thunar \
+	--with-browser=firefox \
 	--with-terminal=Terminal
 
 %make
@@ -67,20 +58,6 @@ sed -i -e 's#/etc/X11/xdg/#/etc/xdg/#g' scripts/xinitrc.in
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-# use 06 as session numbering
-#mv %{buildroot}%{_sysconfdir}/X11/wmsession.d/10XFce4 \
-#    %{buildroot}%{_sysconfdir}/X11/wmsession.d/06XFce4
-
-# remove gdm session file, use fndSession
-#rm %{buildroot}%{_sysconfdir}/X11/gdm/Sessions/XFce4
-#rm %{buildroot}%{_sysconfdir}/X11/dm/Sessions/xfce.desktop
-
-# remove switchdesk file, not in mdk
-#rm %{buildroot}%{_datadir}/apps/switchdesk/Xclients.xfce4
-
-# remove desktop file
-#rm %{buildroot}%{_datadir}/xsessions/xfce.desktop
 
 chrpath -d %{buildroot}%{_bindir}/xfrun4
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/xfce4
@@ -117,6 +94,5 @@ rm -rf %{buildroot}
 %{_libdir}/xfce4/xfconf-migration/xfconf-migration-4.6.pl
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*
-#attr(644,root,root) %{_sysconfdir}/X11/wmsession.d/06XFce4
 %{_datadir}/dbus-1/services/org.xfce.RunDialog.service
 %{_datadir}/xsessions/xfce.desktop

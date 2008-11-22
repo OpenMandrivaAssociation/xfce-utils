@@ -1,13 +1,14 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.5.92
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
 # An english native speaker should feel free to update this file :)
 Source1:	Mandriva
+Source2:	06Xfce
 #(tpg) please see bug 29095
 Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
@@ -62,6 +63,9 @@ rm -rf %{buildroot}
 chrpath -d %{buildroot}%{_bindir}/xfrun4
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/xfce4
 
+mkdir -p %{buildroot}%{_sysconfdir}/X11/wmsession.d
+install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/X11/wmsession.d
+
 %find_lang %{name}
 
 %post
@@ -88,6 +92,7 @@ rm -rf %{buildroot}
 %attr(755,root,root) %{_sysconfdir}/xdg/xfce4/xinitrc
 %exclude %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/autostart/xfconf-migration-4.6.desktop
+%{_sysconfdir}/X11/wmsession.d/06Xfce
 %endif
 %dir %{_datadir}/xfce4
 %{_bindir}/*

@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.5.92
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -9,6 +9,8 @@ Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.
 # An english native speaker should feel free to update this file :)
 Source1:	Mandriva
 Source2:	06Xfce
+Source3:	xfce4.sh
+Source4:	xfce4.pam
 #(tpg) please see bug 29095
 Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
@@ -66,15 +68,30 @@ install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/xfce4
 mkdir -p %{buildroot}%{_sysconfdir}/X11/wmsession.d
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/X11/wmsession.d
 
+mkdir -p %{buildroot}%{_sysconfdir}/profiles.d
+install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/profiles.d
+
+mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d
+
 %find_lang %{name}
 
 %post
 %make_session
+if [ "$1" = "2" -a -r /etc/sysconfig/desktop ]; then
+  sed -i -e "s|^DESKTOP=Xfce4$|DESKTOP=xfce4|g" /etc/sysconfig/desktop
+fi
+
+%if %mdkversion < 200900  
 %update_icon_cache hicolor
+%endif
+
 
 %postun
 %make_session
+%if %mdkversion < 200900  
 %clean_icon_cache hicolor
+%endif
 
 %clean
 rm -rf %{buildroot}
@@ -92,7 +109,9 @@ rm -rf %{buildroot}
 %attr(755,root,root) %{_sysconfdir}/xdg/xfce4/xinitrc
 %exclude %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/autostart/xfconf-migration-4.6.desktop
-%{_sysconfdir}/X11/wmsession.d/06Xfce
+%config(noreplace) %{_sysconfdir}/X11/wmsession.d/06Xfce
+%attr(755,root,root) %config(noreplace) %{_sysconfdir}/profiles.d/xfce4.sh
+%config(noreplace) %{_sysconfdir}/pam.d/xfce4
 %endif
 %dir %{_datadir}/xfce4
 %{_bindir}/*

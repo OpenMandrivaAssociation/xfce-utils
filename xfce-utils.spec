@@ -65,14 +65,20 @@ rm -rf %{buildroot}
 chrpath -d %{buildroot}%{_bindir}/xfrun4
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/xfce4
 
+# session
 mkdir -p %{buildroot}%{_sysconfdir}/X11/wmsession.d
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/X11/wmsession.d
 
+# env
 mkdir -p %{buildroot}%{_sysconfdir}/profiles.d
 install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/profiles.d
 
+# pam
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d
+install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/xfce4
+
+# not needed at all in mdv case
+rm -rf %{buildroot}%{_datadir}/xsessions/xfce.desktop
 
 %find_lang %{name}
 
@@ -119,4 +125,3 @@ rm -rf %{buildroot}
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*
 %{_datadir}/dbus-1/services/org.xfce.RunDialog.service
-%{_datadir}/xsessions/xfce.desktop

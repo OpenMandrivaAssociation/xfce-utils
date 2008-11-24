@@ -14,7 +14,7 @@ Source4:	xfce4.pam
 #(tpg) please see bug 29095
 Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
-Patch5:		%{name}-4.5.91-xinitrc.patch
+Patch5:		%{name}-4.5.92-xinitrc.patch
 Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
 Patch8:		%{name}-4.5.91-startxfce-data-dirs.patch
 Patch10:	%{name}-4.5.91-xfmountdev4-use-thunar.patch

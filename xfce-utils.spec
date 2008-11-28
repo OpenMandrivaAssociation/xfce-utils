@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.5.92
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -70,8 +70,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/X11/wmsession.d
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/X11/wmsession.d
 
 # env
-mkdir -p %{buildroot}%{_sysconfdir}/profiles.d
-install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/profiles.d
+mkdir -p %{buildroot}%{_sysconfdir}/profile.d
+install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/profile.d
 
 # pam
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
@@ -116,7 +116,7 @@ rm -rf %{buildroot}
 %exclude %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/autostart/xfconf-migration-4.6.desktop
 %config(noreplace) %{_sysconfdir}/X11/wmsession.d/06Xfce
-%attr(755,root,root) %config(noreplace) %{_sysconfdir}/profiles.d/xfce4.sh
+%attr(755,root,root) %config(noreplace) %{_sysconfdir}/profile.d/xfce4.sh
 %config(noreplace) %{_sysconfdir}/pam.d/xfce4
 %endif
 %dir %{_datadir}/xfce4

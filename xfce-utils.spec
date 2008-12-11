@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.5.92
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -83,7 +83,7 @@ rm -rf %{buildroot}%{_datadir}/xsessions/xfce.desktop
 %find_lang %{name}
 
 %post
-%make_session
+%make_dm_session
 if [ "$1" = "2" -a -r /etc/sysconfig/desktop ]; then
   sed -i -e "s|^DESKTOP=Xfce4$|DESKTOP=xfce4|g" /etc/sysconfig/desktop
 fi

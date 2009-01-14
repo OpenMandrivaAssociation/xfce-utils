@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
-Version:	4.5.92
-Release:	%mkrel 7
+Version:	4.5.93
+Release:	%mkrel 1
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -11,7 +11,7 @@ Source1:	Mandriva
 Source2:	06Xfce
 Source3:	xfce4.sh
 Source4:	xfce4.pam
-Patch: xfce-utils-4.5.92-fix-desktop-entry.patch
+Patch0:		xfce-utils-4.5.92-fix-desktop-entry.patch
 #(tpg) please see bug 29095
 Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
@@ -39,7 +39,7 @@ as the panel and the desktop menu.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1 -b .xinitrc

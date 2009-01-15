@@ -12,8 +12,6 @@ Source2:	06Xfce
 Source3:	xfce4.sh
 Source4:	xfce4.pam
 Patch0:		xfce-utils-4.5.92-fix-desktop-entry.patch
-#(tpg) please see bug 29095
-Patch3:		%{name}-4.4.2-show-version.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
 Patch5:		%{name}-4.5.93-xinitrc.patch
 Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
@@ -40,7 +38,6 @@ as the panel and the desktop menu.
 %prep
 %setup -q
 %patch0 -p1
-%patch3 -p1
 %patch4 -p1
 %patch5 -p1 -b .xinitrc
 %patch6 -p1
@@ -90,14 +87,14 @@ if [ "$1" = "2" -a -r /etc/sysconfig/desktop ]; then
   sed -i -e "s|^DESKTOP=Xfce4$|DESKTOP=xfce4|g" /etc/sysconfig/desktop
 fi
 
-%if %mdkversion < 200900  
+%if %mdkversion < 200900
 %update_icon_cache hicolor
 %endif
 
 
 %postun
 %make_session
-%if %mdkversion < 200900  
+%if %mdkversion < 200900
 %clean_icon_cache hicolor
 %endif
 

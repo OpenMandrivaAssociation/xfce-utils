@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.5.93
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -45,6 +45,11 @@ as the panel and the desktop menu.
 %patch10 -p1
 
 %build
+
+%if %mdkversion > 200900
+sed -i -e 's#/etc/X11/xdg#/etc/xdg#g' scripts/xinitrc.in
+%endif
+
 %configure2_5x \
 	--enable-dbus \
 %if %mdkversion < 200900

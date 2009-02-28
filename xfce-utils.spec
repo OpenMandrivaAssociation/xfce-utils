@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
-Version:	4.5.99.1
-Release:	%mkrel 2
+Version:	4.6.0
+Release:	%mkrel 1
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -41,7 +41,7 @@ as the panel and the desktop menu.
 %patch4 -p1
 %patch5 -p1 -b .xinitrc
 %patch6 -p1
-%patch8 -p1
+#%patch8 -p1
 %patch10 -p1
 
 %build

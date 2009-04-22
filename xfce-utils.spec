@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
-Version:	4.6.0
-Release:	%mkrel 4
+Version:	4.6.1
+Release:	%mkrel 1
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -13,13 +13,13 @@ Source3:	xfce4.sh
 Source4:	xfce4.pam
 Patch0:		xfce-utils-4.5.92-fix-desktop-entry.patch
 Patch4:		01_xflock4-test-running-screensaver.patch
-Patch5:		%{name}-4.5.99.1-xinitrc.patch
+Patch5:		%{name}-4.6.1-xinitrc.patch
 Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
 Patch8:		%{name}-4.6.0-startxfce-data-dirs.patch
 Patch10:	%{name}-4.5.91-xfmountdev4-use-thunar.patch
 BuildRequires:	chrpath
 BuildRequires:	dbus-glib-devel
-BuildRequires:	libxfcegui4-devel
+BuildRequires:	libxfcegui4-devel >= 4.6.0
 # for /usr/sbin/fndSession:
 Requires:	desktop-common-data
 Requires:	exo

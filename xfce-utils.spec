@@ -1,7 +1,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.6.1
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -17,6 +17,7 @@ Patch5:		%{name}-4.6.1-xinitrc.patch
 Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
 Patch8:		%{name}-4.6.0-startxfce-data-dirs.patch
 Patch10:	%{name}-4.5.91-xfmountdev4-use-thunar.patch
+Patch11:	%{name}-4.6.1-register-consolekit-session.patch
 BuildRequires:	chrpath
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libxfcegui4-devel >= 4.6.0
@@ -28,6 +29,7 @@ Requires:	xinit
 Requires:	xdg-user-dirs-gtk
 Requires:	xscreensaver
 Requires:	iceauth
+Requires:	consolekit
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -44,6 +46,7 @@ as the panel and the desktop menu.
 %patch6 -p1
 %patch8 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 

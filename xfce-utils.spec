@@ -1,26 +1,25 @@
+%define url_ver %(echo %{version} | cut -c 1-3)
+
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
-Version:	4.6.2
-Release:	%mkrel 6
+Version:	4.7.0
+Release:	%mkrel 1
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
-Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
+Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 # An english native speaker should feel free to update this file :)
 Source1:	Mandriva
 Source2:	06Xfce
 Source3:	xfce4.sh
 Source4:	xfce4.pam
-Patch0:		xfce-utils-4.5.92-fix-desktop-entry.patch
-Patch4:		01_xflock4-test-running-screensaver.patch
-Patch5:		%{name}-4.6.2-xinitrc.patch
+Patch5:		%{name}-4.7.0-xinitrc.patch
 Patch6:		%{name}-4.4.2-prevent-about-dialog-resize.patch
-Patch8:		%{name}-4.6.0-startxfce-data-dirs.patch
 Patch10:	%{name}-4.5.91-xfmountdev4-use-thunar.patch
-Patch11:	%{name}-4.6.1-register-consolekit-session.patch
 BuildRequires:	chrpath
 BuildRequires:	dbus-glib-devel
-BuildRequires:	libxfcegui4-devel >= 4.6.0
+BuildRequires:	libxfce4util-devel >= 4.7.0
+BuildRequires:	libxfce4ui-devel >= 4.7.0
 # for /usr/sbin/fndSession:
 Requires:	desktop-common-data
 Requires:	exo
@@ -40,13 +39,9 @@ as the panel and the desktop menu.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch4 -p1
 %patch5 -p1 -b .xinitrc
 %patch6 -p1
-%patch8 -p1
 %patch10 -p1
-#%patch11 -p1
 
 %build
 
@@ -132,4 +127,5 @@ rm -rf %{buildroot}
 %{_libdir}/xfce4/xfconf-migration/xfconf-migration-4.6.pl
 %{_datadir}/xfce4/*
 %{_datadir}/icons/*
+%{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.xfce.RunDialog.service

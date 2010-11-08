@@ -3,7 +3,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.7.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -61,7 +61,7 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 chrpath -d %{buildroot}%{_bindir}/xfrun4
-install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/xfce4
+install -m 644 -D %{SOURCE1} %{buildroot}%{_datadir}/xfce4/Mandriva
 
 # session
 mkdir -p %{buildroot}%{_sysconfdir}/X11/wmsession.d
@@ -105,6 +105,7 @@ rm -rf %{buildroot}
 %attr(755,root,root) %config(noreplace) %{_sysconfdir}/profile.d/xfce4.sh
 %config(noreplace) %{_sysconfdir}/pam.d/xfce4
 %dir %{_datadir}/xfce4
+%{_datadir}/xfce4/Mandriva
 %{_bindir}/*
 %{_libdir}/xfce4/xfconf-migration/xfconf-migration-4.6.pl
 %{_datadir}/icons/*

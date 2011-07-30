@@ -3,7 +3,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.8.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce
@@ -13,7 +13,6 @@ Source1:	Mandriva
 Source2:	06Xfce
 Source3:	xfce4.sh
 Source4:	xfce4.pam
-Patch5:		%{name}-4.7.1-xinitrc.patch
 Patch10:	%{name}-4.5.91-xfmountdev4-use-thunar.patch
 BuildRequires:	chrpath
 BuildRequires:	dbus-glib-devel
@@ -38,7 +37,6 @@ as the panel and the desktop menu.
 
 %prep
 %setup -q
-%patch5 -p1 -b .xinitrc
 %patch10 -p1
 
 %build

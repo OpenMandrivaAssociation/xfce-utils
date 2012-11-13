@@ -1,0 +1,26 @@
+diff -Naur xfce-utils-4.8.2/scripts/xinitrc.in.in xfce-utils-4.8.2.tpg//scripts/xinitrc.in.in
+--- xfce-utils-4.8.2/scripts/xinitrc.in.in	2011-06-18 06:05:25.000000000 +0000
++++ xfce-utils-4.8.2.tpg//scripts/xinitrc.in.in	2011-07-30 18:56:13.000000000 +0000
+@@ -71,6 +71,22 @@
+     fi
+ fi
+ 
++# Create Terminal and Thunar user preferences if they are missing
++for i in Terminal Thunar; do
++    if [ ! -d $XDG_CONFIG_HOME/$i ]; then
++	mkdir -p $XDG_CONFIG_HOME/$i
++	cp -r /etc/xdg/$i $XDG_CONFIG_HOME
++    fi ;
++done
++
++
++# Create panel and xfconf user preferences if they are missing
++for i in panel xfconf; do
++    if [ ! -d $XDG_CONFIG_HOME/xfce4/$i ]; then
++	mkdir -p $XDG_CONFIG_HOME/xfce4/$i
++	cp -r /etc/xdg/xfce4/$i $XDG_CONFIG_HOME/xfce4
++    fi ;
++done
+ 
+ # Modify libglade and glade environment variables so that
+ # it will find the files installed by Xfce

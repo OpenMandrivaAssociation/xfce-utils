@@ -1,6 +1,2 @@
 sources:
-  "06Xfce:"	f21198325b8c4d8dc191b889713698040c860250
-  "Mandriva:"	3d94be27e1bbbbff7cea6578622dc3f8c31aff91
-  "xfce4.pam:"	51d93fe2515543be0c1011db55a209972c2fcc18
-  "xfce4.sh:"	e71b13d0ab71755ddd2aec9bebb20bd48f63f12e
-  "xfce-utils-4.8.3.tar.bz2:"	159d445b689ebbf73462a4b4baf5cce4e04afaab
+  "xfce-utils-4.8.3.tar.bz2": 159d445b689ebbf73462a4b4baf5cce4e04afaab

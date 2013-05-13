@@ -3,7 +3,7 @@
 Summary:	Utilities for the Xfce Desktop Environment
 Name:		xfce-utils
 Version:	4.8.3
-Release:	%mkrel 1
+Release:	ZED'S DEAD BABY
 License:	GPLv2+
 URL:		http://www.xfce.org
 Group:		Graphical desktop/Xfce

@@ -5,7 +5,7 @@ Name:		xfce-utils
 Version:	4.8.3
 Release:	ZED'S DEAD BABY
 License:	GPLv2+
-URL:		http://www.xfce.org
+URL:		https://www.xfce.org
 Group:		Graphical desktop/Xfce
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 # An english native speaker should feel free to update this file :)

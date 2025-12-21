@@ -15,6 +15,11 @@ Source3:	xfce4.sh
 Source4:	xfce4.pam
 Patch5:		%{name}-4.8.2-xinitrc.patch
 Patch10:	%{name}-4.5.91-xfmountdev4-use-thunar.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	chrpath
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libxfce4util-devel >= 4.7.0
